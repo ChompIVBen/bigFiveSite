@@ -1,0 +1,229 @@
+<html>
+  <head>
+    <title>Personality Opposites</title>
+    <style>
+      .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 15px;
+        border-radius: 5px;
+        background: linear-gradient(to right, #ffffff,  #000000);
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+      }
+
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #000000;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+      }
+
+      .slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #4caf50;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(255,255,255,0.6);
+      }
+      .dispTxt {
+  background: #d1d1d1;
+  margin: auto;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  text-align: center;
+  font-size: 24px;
+  color: #0080ff;
+  text-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+body {
+  background: linear-gradient(to right, #ff0080, #ff8c00, #ffff00, #00ff00, #0080ff, #800080);
+
+}
+p {
+  font-size: 20px;
+  color: #171818;
+  text-shadow: 0 0 15px rgba(39, 38, 38, 0.6); 
+}
+</style>
+  </head>
+  <body>
+    <h1>Personality Opposites: Understanding Others *Anti-You Generator!*</h1>
+    <p>1. Take the test <a href="https://www.outofservice.com/bigfive/">https://www.outofservice.com/bigfive/</a> note: A test is like a single snapshot. It cannot capture the entirely of a person and it might be affected by stress, external environment etc.</p>
+    <p>2. Use the sliders to input your scores!</p>
+    <form id="personality-form">
+        <label for="openness">Openness:</label><br>
+        <input type="range" min="0" max="100" value="50" class="slider" id="openness">
+        <input type="text" id="openness-value" value="50" readonly class="dispTxt">
+        <br>
+        <label for="conscientiousness">Conscientiousness:</label><br>
+        <input type="range" min="0" max="100" value="50" class="slider" id="conscientiousness">
+        <input type="text" id="conscientiousness-value" value="50" readonly class="dispTxt">
+        <br>
+        <label for="extraversion">Extraversion:</label><br>
+        <input type="range" min="0" max="100" value="50" class="slider" id="extraversion">
+        <input type="text" id="extraversion-value" value="50" readonly class="dispTxt">
+        <br>
+        <label for="agreeableness">Agreeableness:</label><br>
+        <input type="range" min="0" max="100" value="50" class="slider" id="agreeableness">
+        <input type="text" id="agreeableness-value" value="50" readonly class="dispTxt">
+        <br>
+        <label for="neuroticism">Neuroticism:</label><br>
+        <input type="range" min="0" max="100" value="50" class="slider" id="neuroticism">
+        <input type="text" id="neuroticism-value" value="50" readonly class="dispTxt">
+        <br>
+        <p>3.</p>
+        <button type="button" id="submit-button">Show Opposite Personality</button>
+      </form> 
+      
+    <div id="opposite-personality"></div>
+    <form id="opposite-personality-form">
+      <label for="opposite-openness">Openness:</label><br>
+      <input type="range" min="0" max="100" value="50" class="slider" id="opposite-openness" disabled>
+      <input type="text" id="opposite-openness-value" value="50" readonly class="dispTxt">
+      <br>
+      <label for="opposite-conscientiousness">Conscientiousness:</label><br>
+      <input type="range" min="0" max="100" value="50" class="slider" id="opposite-conscientiousness" disabled>
+      <input type="text" id="opposite-conscientiousness-value" value="50" readonly class="dispTxt">
+      <br>
+      <label for="opposite-extraversion">Extraversion:</label><br>
+      <input type="range" min="0" max="100" value="50" class="slider" id="opposite-extraversion" disabled>
+      <input type="text" id="opposite-extraversion-value" value="50" readonly class="dispTxt">
+      <br>
+      <label for="opposite-agreeableness">Agreeableness:</label><br>
+      <input type="range" min="0" max="100" value="50" class="slider" id="opposite-agreeableness" disabled>
+      <input type="text" id="opposite-agreeableness-value" value="50" readonly class="dispTxt">
+      <br>
+      <label for="opposite-neuroticism">Neuroticism:</label><br>
+      <input type="range" min="0" max="100" value="50" class="slider" id="opposite-neuroticism" disabled>
+      <input type="text" id="opposite-neuroticism-value" value="50" readonly class="dispTxt">
+    </form>
+    <button onclick="window.location.reload()">Restart</button>
+
+    
+
+    <script>
+      // Get references to the form elements and the submit button
+      const form = document.getElementById("personality-form");
+      const submitButton = document.getElementById("submit-button");
+      const oppositePersonalityDiv = document.getElementById("opposite-personality");
+
+      // Add an event listener to the submit button to handle clicking the button
+      submitButton.addEventListener("click", () => {
+        // Get the values of the form elements
+        const openness = form.elements.openness.value;
+        const conscientiousness = form.elements.conscientiousness.value;
+        const extraversion = form.elements.extraversion.value;
+        const agreeableness = form.elements.agreeableness.value;
+        const neuroticism = form.elements.neuroticism.value;
+
+    // Calculate the opposite personality traits
+    const oppositeOpenness = 100 - openness;
+    const oppositeConscientiousness = 100 - conscientiousness;
+    const oppositeExtraversion = 100 - extraversion;
+    const oppositeAgreeableness = 100 - agreeableness;
+    const oppositeNeuroticism = 100 - neuroticism;
+
+    // Generate a description of the opposite personality
+    let oppositePersonality = "<b>Opposite Personality, the anti-you!:</b><br>";
+    if (oppositeOpenness <= 25) {
+      oppositePersonality += "<b>Very close-minded, resistant to new ideas and experiences.</b> A person who scores lower than 25 on the Big Five openness scale is likely to be closed-minded and resistant to new ideas and experiences. They may have a narrow range of interests and may not be curious about the world around them. They may also be rigid in their thinking and may not be open to alternative viewpoints or perspectives. For example, let's say Sarah is a 30-year-old woman who scores lower than 25 on the Big Five openness scale. Sarah has always been a very traditional and conservative person, and she tends to stick to what she knows and is comfortable with. She is not very open to trying new things or exploring new ideas, and she often resists change or anything that is outside of her normal routine. Sarah has always been very focused on her career, and she has always worked hard to achieve her goals. She has never taken any risks or tried anything new, and she has always played it safe in her personal and professional life. As a result, Sarah has a very narrow range of interests and experiences, and she is not very curious about the world around her. She tends to stick to familiar topics and activities, and she is not very open to learning about new things or trying new things. Overall, Sarah is a very closed-minded person who is resistant to new ideas and experiences. She is not very open to new perspectives or viewpoints, and she is not very curious about the world around her. As a result, she scores lower than 25 on the Big Five openness scale.";
+    } else if (oppositeOpenness <= 50) {
+      oppositePersonality += "<b>Somewhat close-minded, somewhat resistant to new ideas and experiences.</b> A person who scores above a 25 but less than 51 on the Big Five openness scale is somewhat open-minded, but may still have some reservations or limitations when it comes to trying new things or exploring new ideas. They may be open to some new experiences, but may still be hesitant or skeptical about others. For example, let's say Tom is a 35-year-old man who scores above a 25 but less than 51 on the Big Five openness scale. Tom is generally open to new experiences and is willing to try new things, but he still has some reservations and limitations. He is not as open-minded as some people, but he is still more open-minded than others. Tom is generally curious about the world around him and is willing to learn about new things. He is open to trying new activities and exploring new places, but he is still hesitant to take any major risks or try anything too out of his comfort zone. He is also open to new perspectives and viewpoints, but he may still be skeptical of certain ideas or concepts that are too far outside of his normal way of thinking. Overall, Tom is somewhat open-minded, but he still has some reservations and limitations when it comes to trying new things or exploring new ideas. He is open to some new experiences, but he may still be hesitant or skeptical about others. As a result, he scores above a 25 but less than 51 on the Big Five openness scale.";
+    } else if (oppositeOpenness <= 75) {
+      oppositePersonality += "<b>Somewhat open-minded, somewhat receptive to new ideas and experiences.</b> A person who scores above a 50 but less than 76 on the Big Five openness scale is generally open-minded and curious, but may still have some reservations or limitations when it comes to trying new things or exploring new ideas. They are open to new experiences and are willing to try new things, but they may still be cautious or hesitant about certain activities or ideas. For example, let's say Rachel is a 25-year-old woman who scores above a 50 but less than 76 on the Big Five openness scale. Rachel is generally open-minded and curious, and she is willing to try new things and explore new ideas. However, she still has some reservations and limitations when it comes to certain activities or experiences. Rachel is open to trying new activities and exploring new places, and she is generally willing to take risks and try new things. However, she may still be hesitant to try activities that are too far outside of her comfort zone or that she perceives as being too risky. She is also open to new perspectives and viewpoints, but she may still be skeptical of certain ideas or concepts that are too far outside of her normal way of thinking. Overall, Rachel is generally open-minded and curious, but she still has some reservations and limitations when it comes to trying new things or exploring new ideas. She is open to new experiences and is willing to try new things, but she may still be cautious or hesitant about certain activities or ideas. As a result, she scores above a 50 but less than 76 on the Big Five openness scale.";
+    } else {
+      oppositePersonality += "<b>Very open-minded, receptive to new ideas and experiences.</b> A person who scores above a 76 on the Big Five openness scale is highly open-minded and curious, and they are generally willing to try new things and explore new ideas. They are open to new experiences and are not afraid to take risks or step outside of their comfort zone. They are also open to new perspectives and viewpoints, and are generally willing to consider alternative ideas and concepts. For example, let's say Mark is a 40-year-old man who scores above a 76 on the Big Five openness scale. Mark is highly open-minded and curious, and he is always seeking out new experiences and ideas. He is willing to try new things and explore new places, and he is not afraid to take risks or step outside of his comfort zone. Mark is also open to new perspectives and viewpoints, and he is generally willing to consider alternative ideas and concepts. He is not closed-minded or resistant to change, and he is always open to learning and growing. He is also very curious about the world around him, and he is always seeking out new knowledge and experiences. Overall, Mark is highly open-minded and curious, and he is generally willing to try new things and explore new ideas. He is open to new experiences and is not afraid to take risks or step outside of his comfort zone. He is also open to new perspectives and viewpoints, and is generally willing to consider alternative ideas and concepts. As a result, he scores above a 76 on the Big Five openness scale.";
+    }
+    if (oppositeConscientiousness <= 25) {
+      oppositePersonality += "<br><b>Very sloppy, disorganized, and unreliable.</b> A person who scores lower than 25 on the Big Five Conscientiousness scale is likely to be irresponsible and disorganized, and may struggle with self-discipline and self-control. They may be impulsive and may not think through their actions or decisions carefully. For example, let's say Sarah is a 25-year-old woman who scores lower than 25 on the Big Five Conscientiousness scale. Sarah has always struggled with responsibility and organization, and she often finds it difficult to manage her time and priorities effectively. She tends to be impulsive and may not think through her actions or decisions carefully, which can lead to problems or consequences in her personal and professional life. Sarah has always struggled with self-discipline and self-control, and she often finds it difficult to resist temptations or make good choices. She may be prone to procrastination or may struggle to follow through on tasks or commitments. As a result, Sarah may have a hard time achieving her goals or meeting deadlines, and she may have trouble managing her responsibilities effectively. Overall, Sarah is a highly irresponsible and disorganized person who struggles with self-discipline and self-control. She is impulsive and may not think through her actions or decisions carefully, which can lead to problems or consequences in her personal and professional life. As a result, she scores lower than 25 on the Big Five Conscientiousness scale.";
+    } else if (oppositeConscientiousness <= 50) {
+      oppositePersonality += "<br><b>Somewhat sloppy, somewhat disorganized, and somewhat unreliable.</b> A person who scores above a 25 but less than 51 on the Big Five Conscientiousness scale is somewhat responsible and organized, but may still struggle with self-discipline and self-control at times. They may be inconsistent in their behavior and may not always follow through on tasks or commitments. For example, let's say Tom is a 35-year-old man who scores above a 25 but less than 51 on the Big Five Conscientiousness scale. Tom is generally responsible and organized, but he may still struggle with self-discipline and self-control at times. He tends to be inconsistent in his behavior and may not always follow through on tasks or commitments as he should. Tom is generally able to manage his time and priorities effectively, but he may have a hard time sticking to a schedule or routine. He may be prone to procrastination or may struggle to focus on tasks or goals. As a result, Tom may have a hard time achieving his goals or meeting deadlines, and he may struggle to manage his responsibilities effectively at times. Overall, Tom is a somewhat responsible and organized person, but he may still struggle with self-discipline and self-control at times. He is inconsistent in his behavior and may not always follow through on tasks or commitments as he should. As a result, he scores above a 25 but less than 51 on the Big Five Conscientiousness scale.";
+    } else if (oppositeConscientiousness <= 75) {
+      oppositePersonality += "<br><b>Somewhat conscientious, somewhat organized, and somewhat reliable.</b> A person who scores above a 50 but less than 76 on the Big Five Conscientiousness scale is generally responsible and organized, but may still have some moments of inconsistency or lack of self-discipline. They are generally able to manage their time and priorities effectively, but may still struggle with self-control or focus at times. For example, let's say Rachel is a 25-year-old woman who scores above a 50 but less than 76 on the Big Five Conscientiousness scale. Rachel is generally responsible and organized, and she is generally able to manage her time and priorities effectively. However, she may still have some moments of inconsistency or lack of self-discipline, and she may struggle with self-control or focus at times. Rachel is generally able to follow through on tasks and commitments, but she may have a hard time sticking to a schedule or routine. She may be prone to procrastination or may struggle to focus on tasks or goals at times. As a result, Rachel may have a hard time achieving her goals or meeting deadlines at times, but she is generally able to manage her responsibilities effectively. Overall, Rachel is a generally responsible and organized person, but she may still have some moments of inconsistency or lack of self-discipline. She is generally able to manage her time and priorities effectively, but may still struggle with self-control or focus at times. As a result, she scores above a 50 but less than 76 on the Big Five Conscientiousness scale.";
+    } else {
+      oppositePersonality += "<br><b>Very conscientious, organized, and reliable.</b> A person who scores above 76 on the Big Five Conscientiousness scale is highly responsible and organized, and they are generally able to manage their time and priorities effectively. They have strong self-discipline and self-control, and they are able to follow through on tasks and commitments consistently. For example, let's say Mark is a 40-year-old man who scores above 76 on the Big Five Conscientiousness scale. Mark is highly responsible and organized, and he is able to manage his time and priorities effectively. He has strong self-discipline and self-control, and he is able to follow through on tasks and commitments consistently. Mark is able to stick to a schedule or routine and is able to focus on tasks or goals effectively. He is not prone to procrastination, and he is able to achieve his goals and meet deadlines consistently. He is also able to manage his responsibilities effectively, and he is able to handle multiple tasks and commitments without becoming overwhelmed. Overall, Mark is a highly responsible and organized person, and he is able to manage his time and priorities effectively. He has strong self-discipline and self-control, and he is able to follow through on tasks and commitments consistently. As a result, he scores above 76 on the Big Five Conscientiousness scale.";
+    }
+    if (oppositeExtraversion <= 25) {
+      oppositePersonality += "<br><b>Very introverted, preferring solitude and small social groups.</b> A person who scores lower than 25 on the Big Five Extraversion scale is likely to be introverted and may struggle with social interactions and communication. They may prefer solitude and may not seek out social situations or attention. For example, let's say Sarah is a 25-year-old woman who scores lower than 25 on the Big Five Extraversion scale. Sarah is a very introverted person who struggles with social interactions and communication. She prefers solitude and does not seek out social situations or attention. Sarah tends to be shy and reserved, and she may have a hard time starting conversations or speaking up in groups. She may struggle to make friends or establish social connections, and she may feel uncomfortable in social situations. As a result, Sarah may have a hard time building relationships and may struggle to be assertive or confident in social situations. Overall, Sarah is a very introverted person who struggles with social interactions and communication. She prefers solitude and does not seek out social situations or attention. As a result, she scores lower than 25 on the Big Five Extraversion scale.";
+    } else if (oppositeExtraversion <= 50) {
+      oppositePersonality += "<br><b>Somewhat introverted, somewhat preferring solitude and small social groups.</b> A person who scores above a 25 but less than 51 on the Big Five Extraversion scale is somewhat introverted, but may still be able to participate in social situations and communicate effectively. They may prefer solitude at times, but may also enjoy social interactions and attention. For example, let's say Tom is a 35-year-old man who scores above a 25 but less than 51 on the Big Five Extraversion scale. Tom is somewhat introverted, but he is still able to participate in social situations and communicate effectively. He prefers solitude at times, but he also enjoys social interactions and attention. Tom tends to be reserved and may have a hard time starting conversations or speaking up in groups, but he is still able to make friends and establish social connections. He may feel uncomfortable in social situations at times, but he is still able to participate and interact with others effectively. As a result, Tom is able to build relationships and may be able to be assertive or confident in social situations, but he may still struggle with social interactions and communication at times. Overall, Tom is a somewhat introverted person, but he is still able to participate in social situations and communicate effectively. He prefers solitude at times, but he also enjoys social interactions and attention. As a result, he scores above a 25 but less than 51 on the Big Five Extraversion scale.";
+    } else if (oppositeExtraversion <= 75) {
+      oppositePersonality += "<br><b>Somewhat extraverted, somewhat enjoying the company of others and seeking out social situations.</b> A person who scores above a 50 but less than 76 on the Big Five Extraversion scale is generally extroverted and is able to participate in social situations and communicate effectively. They enjoy social interactions and attention, and may seek out social situations and relationships. For example, let's say Rachel is a 25-year-old woman who scores above a 50 but less than 76 on the Big Five Extraversion scale. Rachel is generally extroverted and is able to participate in social situations and communicate effectively. She enjoys social interactions and attention, and she may seek out social situations and relationships. Rachel is confident and assertive in social situations, and she is able to make friends and establish social connections easily. She is able to start conversations and speak up in groups, and she is able to build relationships and interact with others effectively. As a result, Rachel is able to participate in social situations and communicate effectively, and she is able to build relationships and be confident and assertive in social situations. Overall, Rachel is a generally extroverted person who is able to participate in social situations and communicate effectively. She enjoys social interactions and attention, and she may seek out social situations and relationships. As a result, she scores above a 50 but less than 76 on the Big Five Extraversion scale.";
+    } else {
+      oppositePersonality += "<br><b>Very extraverted, enjoying the company of others and seeking out social situations.</b> A person who scores above a 76 on the Big Five Extraversion scale is highly extroverted and is very comfortable in social situations and communication. They enjoy social interactions and attention, and they may actively seek out social situations and relationships. For example, let's say Mark is a 40-year-old man who scores above a 76 on the Big Five Extraversion scale. Mark is highly extroverted and is very comfortable in social situations and communication. He enjoys social interactions and attention, and he may actively seek out social situations and relationships. Mark is confident and assertive in social situations, and he is able to make friends and establish social connections easily. He is able to start conversations and speak up in groups, and he is able to build relationships and interact with others effectively. Mark is able to participate in social situations and communicate effectively, and he is able to build relationships and be confident and assertive in social situations. Overall, Mark is a highly extroverted person who is very comfortable in social situations and communication. He enjoys social interactions and attention, and he may actively seek out social situations and relationships. As a result, he scores above a 76 on the Big Five Extraversion scale.";
+    }
+    if (oppositeAgreeableness <= 25) {
+      oppositePersonality += "<br><b>Very disagreeable, confrontational and combative.</b> A person who scores lower than 25 on the Big Five Agreeableness scale is likely to be confrontational and may struggle with getting along with others. They may be uncooperative and may not be able to compromise or work effectively in a team. For example, let's say Sarah is a 25-year-old woman who scores lower than 25 on the Big Five Agreeableness scale. Sarah is a very confrontational person and may struggle with getting along with others. She tends to be uncooperative and may not be able to compromise or work effectively in a team. Sarah may have a hard time building relationships and may struggle to be a good listener or to consider others' perspectives. She may be resistant to change or to other people's ideas, and she may struggle to be flexible or adaptable in social situations. As a result, Sarah may have a hard time building relationships and may struggle to work effectively with others. Overall, Sarah is a very confrontational person who may struggle with getting along with others. She is uncooperative and may not be able to compromise or work effectively in a team. As a result, she scores lower than 25 on the Big Five Agreeableness scale.";
+    } else if (oppositeAgreeableness <= 50) {
+      oppositePersonality += "<br><b>Somewhat disagreeable, somewhat confrontational and combative.</b> A person who scores above a 25 but less than 51 on the Big Five Agreeableness scale is somewhat confrontational, but may still be able to get along with others and work effectively in a team. They may struggle with compromise and may not always be able to consider others' perspectives, but they may still be able to build relationships and work effectively with others. For example, let's say Tom is a 35-year-old man who scores above a 25 but less than 51 on the Big Five Agreeableness scale. Tom is somewhat confrontational, but he is still able to get along with others and work effectively in a team. He may struggle with compromise and may not always be able to consider others' perspectives, but he is still able to build relationships and work effectively with others. Tom may have a hard time being a good listener or considering others' perspectives, and he may be resistant to change or to other people's ideas. However, he is still able to build relationships and may be able to be flexible or adaptable in social situations at times. As a result, Tom is able to work effectively with others and may be able to build relationships, but he may still struggle with compromise and may not always be able to consider others' perspectives. Overall, Tom is a somewhat confrontational person, but he is still able to get along with others and work effectively in a team. He may struggle with compromise and may not always be able to consider others' perspectives, but he is still able to build relationships and work effectively with others. As a result, he scores above a 25 but less than 51 on the Big Five Agreeableness scale.";
+    } else if (oppositeAgreeableness <= 75) {
+      oppositePersonality += "<br><b>Somewhat agreeable, somewhat cooperative and good-natured.</b> A person who scores above a 50 but less than 76 on the Big Five Agreeableness scale is generally cooperative and able to get along with others. They are able to compromise and consider others' perspectives, and they are able to work effectively in a team. For example, let's say Rachel is a 25-year-old woman who scores above a 50 but less than 76 on the Big Five Agreeableness scale. Rachel is generally cooperative and able to get along with others. She is able to compromise and consider others' perspectives, and she is able to work effectively in a team. Rachel is a good listener and is able to consider others' perspectives, and she is flexible and adaptable in social situations. She is able to build relationships and is generally able to work effectively with others. Rachel may still have some moments of confrontation or difficulty with compromise, but she is generally able to get along with others and work effectively in a team. Overall, Rachel is a generally cooperative and able to get along with others. She is able to compromise and consider others' perspectives, and she is able to work effectively in a team. As a result, she scores above a 50 but less than 76 on the Big Five Agreeableness scale.";
+    } else {
+      oppositePersonality += "<br><b>Very agreeable, cooperative and good-natured.</b> A person who scores above a 76 on the Big Five Agreeableness scale is highly cooperative and able to get along with others. They are able to compromise and consider others' perspectives, and they are able to work effectively in a team. They may be seen as kind, compassionate, and understanding, and they may go out of their way to help others. For example, let's say Mark is a 40-year-old man who scores above a 76 on the Big Five Agreeableness scale. Mark is highly cooperative and able to get along with others. He is able to compromise and consider others' perspectives, and he is able to work effectively in a team. Mark is seen as kind, compassionate, and understanding, and he goes out of his way to help others. Mark is a good listener and is able to consider others' perspectives, and he is flexible and adaptable in social situations. He is able to build relationships and is able to work effectively with others. Mark is rarely confrontational and is able to compromise and consider others' perspectives consistently. Overall, Mark is a highly cooperative and able to get along with others. He is able to compromise and consider others' perspectives, and he is able to work effectively in a team. He is seen as kind, compassionate, and understanding, and he goes out of his way to help others. As a result, he scores above a 76 on the Big Five Agreeableness scale.";
+    }
+    if (oppositeNeuroticism <= 25) {
+      oppositePersonality += "<br><b>Very stable, calm and even-tempered.</b> A person who scores lower than 25 on the Big Five Neuroticism scale is likely to be emotionally stable and may have a low level of anxiety or negative emotions. They may be able to handle stress and challenges effectively, and they may have a positive outlook on life. For example, let's say Sarah is a 25-year-old woman who scores lower than 25 on the Big Five Neuroticism scale. Sarah is a very emotionally stable person and has a low level of anxiety or negative emotions. She is able to handle stress and challenges effectively, and she has a positive outlook on life. Sarah is generally calm and composed, and she is able to manage her emotions effectively. She is able to cope with stress and challenges without becoming overwhelmed, and she is able to maintain a positive outlook on life. As a result, Sarah is able to handle stress and challenges effectively and is able to maintain a positive outlook on life. Overall, Sarah is a very emotionally stable person who has a low level of anxiety or negative emotions. She is able to handle stress and challenges effectively, and she has a positive outlook on life. As a result, she scores lower than 25 on the Big Five Neuroticism scale.";
+    } else if (oppositeNeuroticism <= 50) {
+      oppositePersonality += "<br><b>Somewhat stable, somewhat calm and even-tempered.</b> A person who scores above a 25 but less than 51 on the Big Five Neuroticism scale is somewhat emotionally unstable, and may experience anxiety or negative emotions at times. They may struggle to handle stress and challenges effectively, and they may have a more negative outlook on life at times. For example, let's say Tom is a 35-year-old man who scores above a 25 but less than 51 on the Big Five Neuroticism scale. Tom is somewhat emotionally unstable, and he may experience anxiety or negative emotions at times. He may struggle to handle stress and challenges effectively, and he may have a more negative outlook on life at times. Tom may become anxious or overwhelmed in stressful situations, and he may struggle to cope with challenges effectively. He may have a negative outlook on life at times, and he may struggle to maintain a positive attitude. However, Tom is still able to manage his emotions effectively at times, and he is able to maintain a positive outlook on life at times. Overall, Tom is a somewhat emotionally unstable person, and he may experience anxiety or negative emotions at times. He may struggle to handle stress and challenges effectively, and he may have a more negative outlook on life at times. As a result, he scores above a 25 but less than 51 on the Big Five Neuroticism scale.";
+    } else if (oppositeNeuroticism <= 75) {
+      oppositePersonality += "<br><b>Somewhat anxious and prone to mood swings.</b> A person who scores above a 50 but less than 76 on the Big Five Neuroticism scale is generally emotionally unstable, and they may experience high levels of anxiety or negative emotions. They may struggle to handle stress and challenges effectively, and they may have a negative outlook on life. For example, let's say Rachel is a 25-year-old woman who scores above a 50 but less than 76 on the Big Five Neuroticism scale. Rachel is generally emotionally unstable, and she may experience high levels of anxiety or negative emotions. She may struggle to handle stress and challenges effectively, and she may have a negative outlook on life. Rachel may become anxious or overwhelmed in stressful situations, and she may struggle to cope with challenges effectively. She may have a negative outlook on life, and she may struggle to maintain a positive attitude. Rachel may have a hard time managing her emotions effectively, and she may struggle to maintain a positive outlook on life. Overall, Rachel is a generally emotionally unstable person, and she may experience high levels of anxiety or negative emotions. She may struggle to handle stress and challenges effectively, and she may have a negative outlook on life. As a result, she scores above a 50 but less than 76 on the Big Five Neuroticism scale.";
+    } else {
+      oppositePersonality += "<br><b>Very anxious and prone to mood swings.</b> A person who scores above a 76 on the Big Five Neuroticism scale is highly emotionally unstable, and they may experience extremely high levels of anxiety or negative emotions. They may struggle to handle stress and challenges effectively, and they may have a very negative outlook on life. For example, let's say Mark is a 40-year-old man who scores above a 76 on the Big Five Neuroticism scale. Mark is highly emotionally unstable, and he may experience extremely high levels of anxiety or negative emotions. He may struggle to handle stress and challenges effectively, and he may have a very negative outlook on life. Mark may become anxious or overwhelmed in even the slightest stressful situations, and he may struggle to cope with even minor challenges effectively. He may have a very negative outlook on life, and he may struggle to maintain a positive attitude. Mark may have a hard time managing his emotions effectively, and he may struggle to maintain a positive outlook on life. Overall, Mark is a highly emotionally unstable person, and he may experience extremely high levels of anxiety or negative emotions. He may struggle to handle stress and challenges effectively, and he may have a very negative outlook on life. As a result, he scores above a 76 on the Big Five Neuroticism scale.";
+    }
+    // Display the opposite personality in the opposite-personality div
+    oppositePersonalityDiv.innerHTML = `<p>${oppositePersonality}</p>`;
+
+    // Display the opposite personality traits
+      // Display the opposite personality's Big Five trait values on non-interactable sliders
+      document.getElementById("opposite-openness").value = oppositeOpenness;
+        document.getElementById("opposite-conscientiousness").value = oppositeConscientiousness;
+        document.getElementById("opposite-extraversion").value = oppositeExtraversion;
+        document.getElementById("opposite-agreeableness").value = oppositeAgreeableness;
+        document.getElementById("opposite-neuroticism").value = oppositeNeuroticism;
+
+        document.getElementById("opposite-openness-value").value = oppositeOpenness;
+        document.getElementById("opposite-conscientiousness-value").value = oppositeConscientiousness;
+        document.getElementById("opposite-extraversion-value").value = oppositeExtraversion;
+        document.getElementById("opposite-agreeableness-value").value = oppositeAgreeableness;
+        document.getElementById("opposite-neuroticism-value").value = oppositeNeuroticism;
+
+
+  });
+
+
+    </script>
+          <script>
+            // Get a reference to the form element
+  
+  // Add an event listener to the form that listens for the "input" event
+  form.addEventListener("input", (event) => {
+    // Get a reference to the slider that triggered the event
+    let slider = event.target;
+  
+    // Get the id of the slider
+    let sliderId = slider.id;
+  
+    // Get the value of the slider
+    let sliderValue = slider.value;
+  
+    // Get a reference to the text box corresponding to the slider
+    let textBox = document.getElementById(`${sliderId}-value`);
+  
+    // Update the value of the text box with the current value of the slider
+    textBox.value = sliderValue;
+  });
+  
+        </script>
+  </body>
+</html>
