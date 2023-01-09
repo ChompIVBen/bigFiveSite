@@ -86,7 +86,6 @@ p {
         <button type="button" id="submit-button">Show Opposite Personality</button>
       </form> 
       
-    <div id="opposite-personality"></div>
     <form id="opposite-personality-form">
       <label for="opposite-openness">Openness:</label><br>
       <input type="range" min="0" max="100" value="50" class="slider" id="opposite-openness" disabled>
@@ -108,6 +107,9 @@ p {
       <input type="range" min="0" max="100" value="50" class="slider" id="opposite-neuroticism" disabled>
       <input type="text" id="opposite-neuroticism-value" value="50" readonly class="dispTxt">
     </form>
+    
+        <div id="opposite-personality"></div>
+
     <button onclick="window.location.reload()">Restart</button>
 
     
@@ -181,8 +183,6 @@ p {
     } else {
       oppositePersonality += "<br><b>Very anxious and prone to mood swings.</b> A person who scores above a 76 on the Big Five Neuroticism scale is highly emotionally unstable, and they may experience extremely high levels of anxiety or negative emotions. They may struggle to handle stress and challenges effectively, and they may have a very negative outlook on life. For example, let's say Mark is a 40-year-old man who scores above a 76 on the Big Five Neuroticism scale. Mark is highly emotionally unstable, and he may experience extremely high levels of anxiety or negative emotions. He may struggle to handle stress and challenges effectively, and he may have a very negative outlook on life. Mark may become anxious or overwhelmed in even the slightest stressful situations, and he may struggle to cope with even minor challenges effectively. He may have a very negative outlook on life, and he may struggle to maintain a positive attitude. Mark may have a hard time managing his emotions effectively, and he may struggle to maintain a positive outlook on life. Overall, Mark is a highly emotionally unstable person, and he may experience extremely high levels of anxiety or negative emotions. He may struggle to handle stress and challenges effectively, and he may have a very negative outlook on life. As a result, he scores above a 76 on the Big Five Neuroticism scale.";
     }
-    // Display the opposite personality in the opposite-personality div
-    oppositePersonalityDiv.innerHTML = `<p>${oppositePersonality}</p>`;
 
     // Display the opposite personality traits
       // Display the opposite personality's Big Five trait values on non-interactable sliders
@@ -198,7 +198,8 @@ p {
         document.getElementById("opposite-agreeableness-value").value = oppositeAgreeableness;
         document.getElementById("opposite-neuroticism-value").value = oppositeNeuroticism;
 
-
+    // Display the opposite personality in the opposite-personality div
+    oppositePersonalityDiv.innerHTML = `<p>${oppositePersonality}</p>`;
   });
 
 
