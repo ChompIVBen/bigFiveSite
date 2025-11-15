@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opposite Personality Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+    .trait { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 5px; }
+    input[type="range"] { width: 300px; }
+    input[type="number"] { width: 50px; }
+    #opposite-personality { margin-top: 30px; padding: 15px; border: 1px solid #ccc; background-color: #f9f9f9; }
+  </style>
+</head>
+<body>
+  <h1>Opposite Personality Generator</h1>
+  <div id="traits">
+    <div class="trait">
+      <label for="openness">Openness:</label>
+      <input type="range" id="openness" min="0" max="100" value="50">
+      <input type="number" id="openness-value" min="0" max="100" value="50">
+    </div>
+    <div class="trait">
+      <label for="conscientiousness">Conscientiousness:</label>
+      <input type="range" id="conscientiousness" min="0" max="100" value="50">
+      <input type="number" id="conscientiousness-value" min="0" max="100" value="50">
+    </div>
+    <div class="trait">
+      <label for="extraversion">Extraversion:</label>
+      <input type="range" id="extraversion" min="0" max="100" value="50">
+      <input type="number" id="extraversion-value" min="0" max="100" value="50">
+    </div>
+    <div class="trait">
+      <label for="agreeableness">Agreeableness:</label>
+      <input type="range" id="agreeableness" min="0" max="100" value="50">
+      <input type="number" id="agreeableness-value" min="0" max="100" value="50">
+    </div>
+    <div class="trait">
+      <label for="neuroticism">Neuroticism:</label>
+      <input type="range" id="neuroticism" min="0" max="100" value="50">
+      <input type="number" id="neuroticism-value" min="0" max="100" value="50">
+    </div>
+  </div>
+
+  <button id="generate">Generate Opposite Personality</button>
+
+  <div id="opposite-personality"></div>
+
+  <script>
+    const generateBtn = document.getElementById("generate");
+    const oppositePersonalityDiv = document.getElementById("opposite-personality");
+
+    generateBtn.addEventListener("click", () => {
+      const openness = parseInt(document.getElementById("openness").value);
+      const conscientiousness = parseInt(document.getElementById("conscientiousness").value);
+      const extraversion = parseInt(document.getElementById("extraversion").value);
+      const agreeableness = parseInt(document.getElementById("agreeableness").value);
+      const neuroticism = parseInt(document.getElementById("neuroticism").value);
+
+      // Calculate opposites
+      const oppositeOpenness = 100 - openness;
+      const oppositeConscientiousness = 100 - conscientiousness;
+      const oppositeExtraversion = 100 - extraversion;
+      const oppositeAgreeableness = 100 - agreeableness;
+      const oppositeNeuroticism = 100 - neuroticism;
+
+      let oppositePersonality = "<b>Opposite Personality, the anti-you!:</b><br>";
+
+      // --- Openness ---
+      if (oppositeOpenness <= 25) {
+        oppositePersonality += "<b>Very close-minded, resistant to new ideas and experiences.</b> A person scoring lower than 25 on the Big Five openness scale tends to be rigid in thought and uninterested in novelty. Their interests are narrow, and they often avoid situations outside their comfort zone. For example, Sarah, a 30-year-old woman, prefers routine and familiarity. She is cautious about new ideas, rarely takes risks, and sticks closely to what she knows. This makes her generally resistant to change and limits her exposure to new experiences.";
+      } else if (oppositeOpenness <= 50) {
+        oppositePersonality += "<b>Somewhat close-minded, somewhat resistant to new ideas and experiences.</b> A score between 26 and 50 suggests limited openness. Such individuals are occasionally curious but still cautious about unfamiliar experiences. For example, Tom, a 35-year-old man, is willing to try new activities or explore new ideas, but he approaches them with skepticism and prefers to stay within a comfortable range. He is moderately open but retains hesitations that restrict full exploration.";
+      } else if (oppositeOpenness <= 75) {
+        oppositePersonality += "<b>Somewhat open-minded, somewhat receptive to new ideas and experiences.</b> Scoring between 51 and 75 indicates curiosity and general openness, though with occasional reservations. Rachel, a 25-year-old woman, enjoys exploring new ideas and experiences but still exercises caution. She is willing to experiment and take moderate risks but may avoid things that feel too unfamiliar or extreme.";
+      } else {
+        oppositePersonality += "<b>Very open-minded, receptive to new ideas and experiences.</b> Scoring above 76 reflects a highly curious and adventurous mindset. Mark, a 40-year-old man, actively seeks novel experiences, embraces change, and is open to diverse perspectives. He is willing to take risks, try new activities, and explore the unknown with enthusiasm.";
+      }
+
+      // --- Conscientiousness ---
+      if (oppositeConscientiousness <= 25) {
+        oppositePersonality += "<br><b>Very sloppy, disorganized, and unreliable.</b> Scoring below 25 indicates difficulties with self-discipline and responsibility. Sarah, a 25-year-old woman, often struggles to manage time and priorities, tends to procrastinate, and may make impulsive decisions without considering consequences. She has trouble following through on commitments and may appear chaotic or inconsistent.";
+      } else if (oppositeConscientiousness <= 50) {
+        oppositePersonality += "<br><b>Somewhat sloppy, somewhat disorganized, and somewhat unreliable.</b> Scores between 26 and 50 suggest a moderate level of organization and reliability. Tom, a 35-year-old man, can manage responsibilities, but occasionally misses deadlines or lapses in consistency. He generally maintains structure but can struggle with self-discipline at times.";
+      } else if (oppositeConscientiousness <= 75) {
+        oppositePersonality += "<br><b>Somewhat conscientious, somewhat organized, and somewhat reliable.</b> A score of 51–75 reflects generally good organization and reliability, with occasional lapses. Rachel, a 25-year-old woman, is responsible and manages her time effectively but may sometimes procrastinate or be distracted. She usually completes tasks and keeps commitments, though not perfectly.";
+      } else {
+        oppositePersonality += "<br><b>Very conscientious, organized, and reliable.</b> Scoring above 76 indicates strong discipline and dependability. Mark, a 40-year-old man, is highly organized, meets deadlines consistently, and follows through on commitments. He manages priorities effectively and rarely struggles with procrastination or disorganization.";
+      }
+
+      // --- Extraversion ---
+      if (oppositeExtraversion <= 25) {
+        oppositePersonality += "<br><b>Very introverted, preferring solitude and small social groups.</b> Scores below 25 suggest a strong preference for quiet and introspection. Sarah, a 25-year-old woman, avoids large social gatherings, prefers alone time, and finds energy in solitude. Social interactions can be draining, and she tends to be reserved in group settings.";
+      } else if (oppositeExtraversion <= 50) {
+        oppositePersonality += "<br><b>Somewhat introverted, somewhat preferring solitude and small social groups.</b> A score between 26 and 50 reflects moderate introversion. Tom, a 35-year-old man, enjoys social interactions but also values alone time. He participates in social activities selectively and may feel drained by extended group engagement.";
+      } else if (oppositeExtraversion <= 75) {
+        oppositePersonality += "<br><b>Somewhat extraverted, somewhat enjoying the company of others and seeking out social situations.</b> Scores from 51 to 75 indicate moderate extraversion. Rachel, a 25-year-old woman, enjoys being with others, participates actively in social settings, and feels energized by social interactions, though she occasionally values quiet time.";
+      } else {
+        oppositePersonality += "<br><b>Very extraverted, enjoying the company of others and seeking out social situations.</b> Above 76 reflects strong sociability. Mark, a 40-year-old man, thrives in group settings, seeks social engagement, and easily connects with others. He enjoys attention and actively builds social networks.";
+      }
+
+      // --- Agreeableness ---
+      if (oppositeAgreeableness <= 25) {
+        oppositePersonality += "<br><b>Very disagreeable, confrontational and combative.</b> Scores below 25 indicate difficulty cooperating with others. Sarah, a 25-year-old woman, often challenges ideas, resists compromise, and may appear argumentative. She can struggle to work effectively in teams and may prioritize her own perspective over others'.";
+      } else if (oppositeAgreeableness <= 50) {
+        oppositePersonality += "<br><b>Somewhat disagreeable, somewhat confrontational and combative.</b> A score of 26–50 reflects moderate agreeableness. Tom, a 35-year-old man, may question others and resist compromise at times but is still capable of working with a team. He occasionally prioritizes his own views over group consensus.";
+      } else if (oppositeAgreeableness <= 75) {
+        oppositePersonality += "<br><b>Somewhat agreeable, somewhat cooperative and good-natured.</b> Scores from 51–75 indicate general cooperativeness. Rachel, a 25-year-old woman, works well with others, considers different viewpoints, and seeks compromise. She may occasionally experience minor conflicts but is generally team-oriented and approachable.";
+      } else {
+        oppositePersonality += "<br><b>Very agreeable, cooperative and good-natured.</b> Above 76 reflects high agreeableness. Mark, a 40-year-old man, is empathetic, kind, and cooperative. He listens well, compromises easily, and works effectively in teams, often helping others and maintaining harmony.";
+      }
+
+      // --- Neuroticism ---
+      if (oppositeNeuroticism <= 25) {
+        oppositePersonality += "<br><b>Very stable, calm and even-tempered.</b> Scores below 25 indicate emotional stability. Sarah, a 25-year-old woman, handles stress well, remains calm under pressure, and maintains a positive outlook. She rarely experiences strong negative emotions and approaches challenges with composure.";
+      } else if (oppositeNeuroticism <= 50) {
+        oppositePersonality += "<br><b>Somewhat stable, somewhat calm and even-tempered.</b> A score between 26 and 50 suggests moderate emotional stability. Tom, a 35-year-old man, experiences occasional anxiety or stress but generally copes effectively and maintains a balanced perspective.";
+      } else if (oppositeNeuroticism <= 75) {
+        oppositePersonality += "<br><b>Somewhat anxious and prone to mood swings.</b> Scores from 51–75 indicate moderate emotional volatility. Rachel, a 25-year-old woman, may experience stress, worry, or mood fluctuations, and can sometimes struggle to manage negative emotions, though she retains periods of stability.";
+      } else {
+        oppositePersonality += "<br><b>Very anxious and prone to mood swings.</b> Above 76 reflects high emotional instability. Mark, a 40-year-old man, experiences intense anxiety, frequent mood swings, and may struggle to cope with stress. His emotional state can change rapidly, and he may find challenges particularly overwhelming.";
+      }
+
+      // Display opposite personality
+      oppositePersonalityDiv.innerHTML = `<p>${oppositePersonality}</p>`;
+    });
+  </script>
+</body>
+</html>
